@@ -13,11 +13,15 @@
 ActiveRecord::Schema.define(version: 2019_12_31_172022) do
 
   create_table "game_genres", force: :cascade do |t|
+    t.integer "game_id"
+    t.integer "genre_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "game_modes", force: :cascade do |t|
+    t.integer "game_id"
+    t.integer "mode_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -32,7 +36,6 @@ ActiveRecord::Schema.define(version: 2019_12_31_172022) do
     t.integer "igdb_rating_count"
     t.float "critic_rating"
     t.integer "critic_rating_count"
-    t.integer "igdb_id"
     t.string "cover_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

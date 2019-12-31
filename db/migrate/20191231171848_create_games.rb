@@ -10,7 +10,6 @@ class CreateGames < ActiveRecord::Migration[6.0]
       t.integer :igdb_rating_count
       t.float :critic_rating
       t.integer :critic_rating_count
-      t.integer :igdb_id
       t.string :cover_url
       
       t.timestamps
