@@ -24,16 +24,15 @@ ActiveRecord::Schema.define(version: 2019_12_31_172022) do
 
   create_table "games", force: :cascade do |t|
     t.string "title"
-    t.string "title_slug"
+    t.string "slug"
     t.string "summary"
     t.string "story"
     t.string "released"
-    t.float "rating"
-    t.integer "rating_count"
     t.float "igdb_rating"
     t.integer "igdb_rating_count"
     t.float "critic_rating"
     t.integer "critic_rating_count"
+    t.integer "igdb_id"
     t.string "cover_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -41,24 +40,31 @@ ActiveRecord::Schema.define(version: 2019_12_31_172022) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
+    t.string "slug"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "modes", force: :cascade do |t|
     t.string "name"
+    t.string "slug"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "user_games", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "game_id"
+    t.integer "rating"
+    t.string "review"
+    t.integer "hours_played"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.string "password"
+    t.string "password_digest"
     t.integer "favorite_game"
     t.integer "favorite_genre"
     t.integer "favorite_mode"
