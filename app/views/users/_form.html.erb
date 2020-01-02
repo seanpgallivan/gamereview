@@ -1,0 +1,8 @@
+    <p>Name (4-20 characters): <%= f.text_field :name %> *</p>
+    <p>Password (6-20 characters): <%= f.password_field :password %> *</p>
+    <p>Confirm Password: <%= f.password_field :password_confirmation %> *</p>
+    <p>Favorite Genre: <%= f.collection_select :favorite_genre, Genre.all.order(:name), :id, :name, {include_blank: true} %></p>
+    <p>Favorite Game Mode: <%= f.collection_select :favorite_mode, Mode.all, :id, :name, {include_blank: true} %></p>
+    <p>Favorite Game: <%= f.collection_select :favorite_game, Game.all.order(:title), :id, :title, {include_blank: true} %></p>
+    <p><%= f.submit %></p>
+    <p><br>(* - Required Fields)</p>

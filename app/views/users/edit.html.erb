@@ -1,0 +1,6 @@
+<h1>Edit User</h1>
+<hr>
+<%= form_for @user, url: edit_path do |f| %>
+    <%= render partial: "form", locals: {f: f} %>
+<% end %>
+<%= render "layouts/flash" %>

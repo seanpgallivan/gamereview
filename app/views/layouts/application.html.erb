@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Gamereview</title>
+    <title>GameReview</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,12 @@
   </head>
 
   <body>
+    <% if logged_in? %>
+      <%= link_to "HOME", home_path %> | <%= link_to "EDIT", edit_path %> | <%= link_to "LOG OUT", welcome_path, method: :delete %>
+    <% else %>
+      <%= link_to "LOG IN", login_path %> | <%= link_to "SIGN UP", signup_path %>
+    <% end %>
+    <hr>
     <%= yield %>
   </body>
 </html>

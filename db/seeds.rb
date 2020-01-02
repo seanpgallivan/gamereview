@@ -3,6 +3,9 @@ require 'net/https'
 http = Net::HTTP.new('api-v3.igdb.com',443)
 http.use_ssl = true
 
+
+
+# print "API REQUESTS... "
 # request = Net::HTTP::Post.new(URI('https://api-v3.igdb.com/genres'), {'user-key' => "bea99e40326fc66d0145d65bff646876"})
 # request.body = 'fields name, slug; sort id; limit 500;'
 # genres = JSON.parse(http.request(request).body)
@@ -20,17 +23,20 @@ http.use_ssl = true
 # request = Net::HTTP::Post.new(URI('https://api-v3.igdb.com/covers'), {'user-key' => "bea99e40326fc66d0145d65bff646876"})
 # request.body = "fields game, url; where id = (#{cover_ids.join(',')}); sort game; limit 500;"
 # covers = JSON.parse(http.request(request).body)
+# puts "done!"
 
 
+
+# print "SEEDING GENRES... "
 # genres.each {|genre| Genre.find_or_create_by(name: genre["name"], slug: genre["slug"])}
-# modes.each {|mode| Mode.find_or_create_by(name: mode["name"], slug: mode["slug"])}
-# games.each_with_index do |game, i|
-#     if covers[i]["game"] == game["id"] && covers[i]["id"] == game["cover"]
-#         gamecover = covers[i]["url"].split('/').last
-#     else
-#         gamecover = nil
-#     end
+# puts "done!"
 
+# print "SEEDING MODES... "
+# modes.each {|mode| Mode.find_or_create_by(name: mode["name"], slug: mode["slug"])}
+# puts "done!"
+
+# print "SEEDING GAMES... "
+# games.each_with_index do |game, i|
 #     Game.find_or_create_by(
 #         title: game["name"],
 #         slug: game["slug"],
@@ -41,18 +47,21 @@ http.use_ssl = true
 #         igdb_rating_count: game["rating_count"],
 #         critic_rating: game["aggregated_rating"],
 #         critic_rating_count: game["aggregated_rating_count"],
-#         cover_url: gamecover
-#     )
+#         cover_url: covers[i]["url"].split('/').last)
 #     game["genres"].each do |genre|
-#         GameGenre.find_or_create_by(game_id: Game.find_by(title: game["name"]).id, genre_id: genre)
+#         new_genre_id = Genre.find_by(name: genres.find {|g| g["id"] == genre}["name"]).id
+#         GameGenre.find_or_create_by(game_id: Game.find_by(title: game["name"]).id, genre_id: new_genre_id)
 #     end
 #     game["game_modes"].each do |mode|
 #         GameMode.find_or_create_by(game_id: Game.find_by(title: game["name"]).id, mode_id: mode)
 #     end
+#     print "#{i}... " if i % 20 == 0
 # end
+# byebug
+# puts "done!"
 
 
 
-
+# "https://images.igdb.com/igdb/image/upload/t_cover_big/"
 # seed = (0...50).map { ('a'..'z').to_a[rand(26)] }.join
 # "https://picsum.photos/seed/#{seed}/250/150"

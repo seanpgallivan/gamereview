@@ -1,0 +1,6 @@
+<% if flash[:message] %>
+    <br>
+    <% flash[:message].each do |msg| %>
+        <h4><%= msg %></h4>
+    <% end %>
+<% end %>
