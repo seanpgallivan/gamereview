@@ -11,10 +11,11 @@
 
   <body>
     <% if logged_in? %>
-      <%= link_to "HOME", home_path %> | <%= link_to "EDIT", edit_path %> | <%= link_to "LOG OUT", welcome_path, method: :delete %>
+      <p><%= link_to "HOME", home_path %> | <%= link_to "EDIT", edit_path %> | <%= link_to "LOG OUT", welcome_path, method: :delete %></p>
     <% else %>
-      <%= link_to "LOG IN", login_path %> | <%= link_to "SIGN UP", signup_path %>
+      <p><%= link_to "LOG IN", login_path %> | <%= link_to "SIGN UP", signup_path %></p>
     <% end %>
+    <p><%= link_to "SEARCH", search_path %></p>
     <hr>
     <%= yield %>
   </body>

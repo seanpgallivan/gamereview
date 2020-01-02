@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :user_games
+
+
   get '/', to: 'static#welcome', as: 'welcome'
   get 'search', to: 'static#search', as: 'search'
   post 'search', to: 'static#results'
@@ -14,9 +17,11 @@ Rails.application.routes.draw do
   get 'user/edit', to: 'users#edit', as: 'edit'
   patch 'user/edit', to: 'users#update'
 
-  resources :user_games
-  resources :modes
-  resources :genres
-  resources :games
+  get 'game/:slug', to: 'games#show', as: 'game'
+
+  get 'genre/:slug', to: 'genres#show', as: 'genre'
+
+  get 'mode/:slug', to: 'modes#show', as: 'mode'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
