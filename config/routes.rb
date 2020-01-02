@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :user_games
-
 
   get '/', to: 'static#welcome', as: 'welcome'
   get 'search', to: 'static#search', as: 'search'
@@ -22,5 +20,12 @@ Rails.application.routes.draw do
   get 'genre/:slug', to: 'genres#show', as: 'genre'
 
   get 'mode/:slug', to: 'modes#show', as: 'mode'
+
+  get 'user/new_game', to: 'user_games#new', as: 'new_played'
+  post 'user/new_game', to: 'user_games#create'
+  get 'user/:slug/edit', to: 'user_games#edit', as: 'edit_played'
+  get 'user/:slug', to: 'user_games#show', as: 'played'
+  patch 'user/:slug', to: 'user_games#update'
+  delete 'user/:slug', to: 'user_games#destroy'
 
 end

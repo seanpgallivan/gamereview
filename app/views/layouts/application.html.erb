@@ -11,7 +11,7 @@
 
   <body>
     <% if logged_in? %>
-      <p><%= link_to "HOME", home_path %> | <%= link_to "EDIT", edit_path %> | <%= link_to "LOG OUT", welcome_path, method: :delete %></p>
+      <p><%= link_to "#{session[:user_name].upcase}'S HOME", home_path %> | <%= link_to "EDIT", edit_path %> | <%= link_to "LOG OUT", welcome_path, method: :delete %></p>
     <% else %>
       <p><%= link_to "LOG IN", login_path %> | <%= link_to "SIGN UP", signup_path %></p>
     <% end %>
