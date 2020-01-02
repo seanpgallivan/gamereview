@@ -1,1 +1,6 @@
-<h1><%= @mode.name %></h1>
+<h1>Games Featuring '<%= @mode.name %>' Mode:</h1>
+<ul>
+<% @mode.games.each do |game| %>
+    <li><%= link_to game.title, game_path(slug: game.slug) %></li>
+<% end %>
+</ul>
