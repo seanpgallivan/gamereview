@@ -31,7 +31,11 @@ class UsersController < ApplicationController
     end
 
     def destroy
+        UserGame.where(user_id: session[:user_id]).destroy_all
         @user.destroy
+        flash[:message] = ["The account for #{session[:user_name]} has been successfully deleted."]
+        session.delete(:user_id)
+        session.delete(:user_name)
         redirect_to welcome_path
     end
 

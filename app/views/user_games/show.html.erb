@@ -1,4 +1,6 @@
-<h1><%= @user.name %>'s Game Page for '<%= @game.title %>'</h1>
+<h1><%= @ug.user.name %>'s Game Page for '<%= @ug.game.title %>'</h1>
 <p>Hours Played: <%= @ug.hours_played %></p>
 <p>Rating: <%= @ug.rating %></p>
 <p>Review: <%= @ug.review %></p>
+<p><%= button_to 'Edit Game Page', edit_played_path(slug: @ug.game.slug), method: :get %></p>
+<p><%= button_to 'Delete Game Page', played_path(slug: @ug.game.slug), method: :delete, data: { confirm: 'Are you sure you want to delete your game page?' } %></p>

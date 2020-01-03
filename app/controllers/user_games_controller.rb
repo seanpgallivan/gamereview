@@ -43,14 +43,13 @@ class UserGamesController < ApplicationController
     private
 
     def ug_params
-        params[:user_game][:user_id] = @user.id
-        params[:user_game][:game_id] ||= @game.id
+        params[:user_game][:user_id] = session[:user_id]
+        params[:user_game][:game_id] ||= @ug.game.id
         params.require(:user_game).permit(:game_id, :user_id, :rating, :review, :hours_played)
     end
 
     def find_ug
-        @game = Game.find_by(slug: params[:slug])
-        @ug = UserGame.find_by(user_id: @user.id, game_id: @game.id)
+        @ug = UserGame.find_by(user_id: @user.id, game_id: Game.find_by(slug: params[:slug]).id)
     end
 
 end

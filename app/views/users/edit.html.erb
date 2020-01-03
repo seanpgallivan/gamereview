@@ -3,4 +3,5 @@
 <%= form_for @user, url: edit_path do |f| %>
     <%= render partial: "form", locals: {f: f} %>
 <% end %>
+<%= button_to 'Delete User', home_path, method: :delete, data: { confirm: 'Are you sure you want to delete your account?' } %>
 <%= render "layouts/flash" %>
