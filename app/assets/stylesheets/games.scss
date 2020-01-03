@@ -1,3 +1,28 @@
 // Place all the styles related to the games controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+h1 {
+    text-align: center;
+}
+
+.third-wrapper {
+    width: 900px;
+    height: 350px;
+    margin: auto;
+}
+
+.third {
+    float: left;
+    width: 300px;
+    text-align: center;
+}
+
+.large-nums {
+    font-size: 30px;
+}
+
+.text-wrapper {
+    width: 900px;
+    margin: auto;
+}

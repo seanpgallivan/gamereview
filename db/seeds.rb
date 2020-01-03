@@ -1,5 +1,7 @@
-###### API Base ###########################
 require 'net/https'
+require 'faker'
+
+###### API Base ###########################
 http = Net::HTTP.new('api-v3.igdb.com',443)
 http.use_ssl = true
 
@@ -57,11 +59,57 @@ http.use_ssl = true
 #     end
 #     print "#{i}... " if i % 20 == 0
 # end
-# byebug
 # puts "done!"
 
 
 
-# "https://images.igdb.com/igdb/image/upload/t_cover_big/"
+# print "SEEDING USERS... "
+# chars = (0...36).map{ |i| i.to_s 36}
+# fav_games = Game.all.map {|g| g.id}
+# gmc = Game.all.count
+# gmc.times { fav_games << nil}
+# fav_genres = Genre.all.map {|g| g.id}
+# gnc = Genre.all.count
+# gnc.times { fav_genres << nil}
+# fav_modes = Mode.all.map {|m| m.id}
+# mdc = Mode.all.count
+# mdc.times { fav_modes << nil}
+# i = 0
+# 100.times {
+#     password = (0...10).map { chars[rand(36)] }.join
+#     User.create(name: Faker::Name.first_name.downcase + Faker::Name.last_name.downcase,
+#         password: password,
+#         password_confirmation: password,
+#         favorite_game: fav_games[rand(gmc * 2)],
+#         favorite_genre: fav_genres[rand(gnc * 2)],
+#         favorite_mode: fav_modes[rand(mdc * 2)]
+#         )
+#     print "#{i}... " if i % 20 == 0
+#     i += 1
+#     }
+# puts "done!"
+
+
+
+# print "SEEDING USER_GAMES... "
+# i = 0
+# 2000.times {
+#     UserGame.create(user_id: User.all.sample.id,
+#         game_id: Game.all.sample.id,
+#         rating: rand(1..100),
+#         review: Faker::Lorem.paragraph(sentence_count: rand(1..10)),
+#         hours_played: rand(1..100)
+#     )
+#     print "#{i}... " if i % 50 == 0
+#     i += 1
+#     }
+# puts "done!"
+
+
+
+
+
+
+
 # seed = (0...50).map { ('a'..'z').to_a[rand(26)] }.join
 # "https://picsum.photos/seed/#{seed}/250/150"

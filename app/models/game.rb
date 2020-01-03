@@ -11,7 +11,7 @@ class Game < ApplicationRecord
     end
 
     def rating
-        self.user_games.sum("rating")
+        (self.user_games.sum("rating").to_f / self.rating_count).round(2)
     end
 
     def rating_count

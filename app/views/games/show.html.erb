@@ -1,36 +1,39 @@
 <h1><%= @game.title %></h1>
-
-<%= image_tag "https://images.igdb.com/igdb/image/upload/t_cover_big/#{@game.cover_url}", height: "300" %>
-
-<br>
-<h2>Genres:</h2>
-<ul>
-<% @game.genres.each do |genre| %>
-    <li><%= link_to genre.name, genre_path(slug: genre.slug) %></li>
-<% end %>
-</ul>
-
-<br>
-<h2>Game Modes:</h2>
-<ul>
-<% @game.modes.each do |mode| %>
-    <li><%= link_to mode.name, mode_path(slug: mode.slug) %></li>
-<% end %>
-</ul>
-
-<br>
-<h3>Released: <%= Time.at(@game.released.to_i).strftime('%m/%d/%Y') %></h3>
-
-<br>
-<h3>Summary:</h3>
-<p><%= @game.summary %></p>
-<p><%= @game.story %></p>
-
-<br>
-<% if @game.rating_count > 0 %>
-    <h3>GameReview Rating:  (based on  total ratings)</h3>
-<% end %>
-<% if @game.critic_rating %>
-    <h3>Critic Rating: <%= @game.critic_rating.round(2) %> (based on <%= @game.critic_rating_count %> total ratings)</h3>
-<% end %>
-<h3>IGDB Rating: <%= @game.igdb_rating.round(2) %> (based on <%= @game.igdb_rating_count %> total ratings)</h3>
+<div class="third-wrapper">
+    <div class="third">
+        <%= image_tag "https://images.igdb.com/igdb/image/upload/t_cover_big/#{@game.cover_url}", height: "300" %>
+    </div>
+    <div class="third">
+        <p>
+            <b>Released:</b><br><%= Time.at(@game.released.to_i).strftime('%m/%d/%Y') %>
+        </p>
+        <br>
+        <p>
+            <b>Genres:</b><br>
+            <% @game.genres.each do |genre| %>
+                <%= link_to genre.name, genre_path(slug: genre.slug) %><br>
+            <% end %>
+        </p>
+        <br>
+        <p>
+            <b>Game Modes:</b><br>
+            <% @game.modes.each do |mode| %>
+                <%= link_to mode.name, mode_path(slug: mode.slug) %><br>
+            <% end %>
+        </p>
+    </div>
+    <div class="third">
+        <% if @game.rating_count > 0 %>
+            <p><span class="large-nums"><%= @game.rating.round(2) %></span><br><b>GameReview Rating</b><br>(based on <%= @game.rating_count %> total ratings)</p>
+        <% end %>
+        <% if @game.critic_rating %>
+            <p><span class="large-nums"><%= @game.critic_rating.round(2) %></span><br><b>Critic Rating</b><br>(based on <%= @game.critic_rating_count %> total ratings)</p>
+        <% end %>
+        <p><span class="large-nums"><%= @game.igdb_rating.round(2) %></span><br><b>IGDB Rating</b><br>(based on <%= @game.igdb_rating_count %> total ratings)</p>
+    </div>
+</div>
+<div class="text-wrapper">
+    <h3>Summary:</h3>
+    <p><%= @game.summary %></p>
+    <p><%= @game.story %></p>
+</div>
