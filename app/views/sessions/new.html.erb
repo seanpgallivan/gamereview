@@ -1,6 +1,9 @@
-<%= form_for :user do |f| %>
-    <p><%= f.label :name %> <%= f.text_field :name %></p>
-    <p><%= f.label :password %> <%= f.password_field :password %></p>
-    <p><%= f.submit "Log In" %></p>
-<% end %>
 <%= render "layouts/flash" %>
+<h1>Log In</h1>
+<div class="content-wrapper">
+    <%= form_for :user do |f| %>
+        <p><%= f.label :name, "Name:"%> <%= f.text_field :name %></p>
+        <p><%= f.label :password, "Password:" %> <%= f.password_field :password %></p>
+        <p><%= f.submit "Log In", class: "button" %></p>
+    <% end %>
+</div>

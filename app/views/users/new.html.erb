@@ -1,6 +1,7 @@
-<h1>New User Signup</h1>
-<hr>
-<%= form_for User.new, url: signup_path do |f| %>
-    <%= render partial: "form", locals: {f: f} %>
-<% end %>
 <%= render "layouts/flash" %>
+<h1>New User Signup</h1>
+<div class="content-wrapper">
+    <%= form_for User.new, url: signup_path do |f| %>
+        <%= render partial: "form", locals: {f: f} %>
+    <% end %>
+</div>

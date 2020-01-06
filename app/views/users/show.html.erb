@@ -1,29 +1,34 @@
 <h1>Welcome, <%= session[:user_name] %>!</h1>
-<h3><%= link_to "Start a New Game!", new_played_path %></h3>
-<br>
-<h3>Your Favorites:</h3>
-<ul>
-    <% if @user.favorite_game %>
-        <li>Game: <%= link_to Game.find(@user.favorite_game).title, game_path(slug: Game.find(@user.favorite_game).slug) %></li>
-    <% else %>
-        <li>Game: <%= link_to "Choose a Favorite Game!", edit_path %></li>
-    <% end %>
-    <% if @user.favorite_genre %>
-        <li>Genre: <%= link_to Genre.find(@user.favorite_genre).name, genre_path(slug: Genre.find(@user.favorite_genre).slug) %></li>
-    <% else %>
-        <li>Genre: <%= link_to "Choose a Favorite Genre!", edit_path %></li>
-    <% end %>
-    <% if @user.favorite_mode %>
-        <li>Game Mode: <%= link_to Mode.find(@user.favorite_mode).name, mode_path(slug: Mode.find(@user.favorite_mode).slug) %></li>
-    <% else %>
-        <li>Game Mode: <%= link_to "Choose a Favorite Game Mode!", edit_path %></li>
-    <% end %>
-</ul>
-<hr>
-<h3>Your Game Pages:</h3>
-<ul>
-    <% @user.user_games.each do |ug| %>
-        <li><%= link_to ug.game.title, played_path(slug: ug.game.slug) %></li>
-    <% end %>
-
-</ul>
+<div class="content-wrapper">
+    <h3><%= link_to "Start a New Game!", new_played_path %></h3>
+</div>
+<br><br>
+<div class="content-wrapper-left">
+    <h3>Your Favorites:</h3>
+    <ul>
+        <% if @user.favorite_game %>
+            <li>Game: <%= link_to Game.find(@user.favorite_game).title, game_path(slug: Game.find(@user.favorite_game).slug) %></li>
+        <% else %>
+            <li>Game: <%= link_to "Choose a Favorite Game!", edit_path %></li>
+        <% end %>
+        <% if @user.favorite_genre %>
+            <li>Genre: <%= link_to Genre.find(@user.favorite_genre).name, genre_path(slug: Genre.find(@user.favorite_genre).slug) %></li>
+        <% else %>
+            <li>Genre: <%= link_to "Choose a Favorite Genre!", edit_path %></li>
+        <% end %>
+        <% if @user.favorite_mode %>
+            <li>Game Mode: <%= link_to Mode.find(@user.favorite_mode).name, mode_path(slug: Mode.find(@user.favorite_mode).slug) %></li>
+        <% else %>
+            <li>Game Mode: <%= link_to "Choose a Favorite Game Mode!", edit_path %></li>
+        <% end %>
+    </ul>
+</div>
+<br><br>
+<div class="content-wrapper-left">
+    <h3>Your Game Pages:</h3>
+    <ul>
+        <% @user.user_games.each do |ug| %>
+            <li><%= link_to ug.game.title, played_path(slug: ug.game.slug) %></li>
+        <% end %>
+    </ul>
+</div>

@@ -6,16 +6,26 @@ h1 {
     text-align: center;
 }
 
+h3 {
+    margin: 3px;
+    color: blue;
+}
+
+p {
+    margin: 3px;
+}
+
 .third-wrapper {
+    background: lightcyan;
     width: 900px;
-    height: 350px;
     margin: auto;
+    padding: 20px;
+    overflow: hidden;
 }
 
 .third {
     float: left;
     width: 300px;
-    text-align: center;
 }
 
 .large-nums {
@@ -25,4 +35,29 @@ h1 {
 .text-wrapper {
     width: 900px;
     margin: auto;
+    text-align: left;
+}
+
+.rating {
+    background: lavenderblush;
+    float: left;
+    width: 70px;
+    height: 70px;
+    font-size: 34px;
+    border: 2px solid;
+    margin-right: 10px;
+    line-height: 70px;
+    text-align: center;
+}
+
+.review-wrapper {
+    background: lightseagreen;
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 900px;
+    padding: 10px;
+    border: 2px solid;
+    overflow: hidden;
+    text-align: left;
 }

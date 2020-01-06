@@ -10,13 +10,30 @@
   </head>
 
   <body>
-    <% if logged_in? %>
-      <p><%= link_to "#{session[:user_name].upcase}'S HOME", home_path %> | <%= link_to "EDIT", edit_path %> | <%= link_to "LOG OUT", welcome_path, method: :delete %></p>
-    <% else %>
-      <p><%= link_to "LOG IN", login_path %> | <%= link_to "SIGN UP", signup_path %></p>
-    <% end %>
-    <p><%= link_to "SEARCH", search_path %></p>
-    <hr>
+    <div class="navbar">
+      <%= link_to search_path do %>
+        <div class="navbar-item">Search</div>
+      <% end %>
+      <% if logged_in? %>
+        <%= link_to home_path do %>
+          <div class="navbar-item">Home</div>
+        <% end %>
+        <%= link_to edit_path do %>
+          <div class="navbar-item">My Account</div>
+        <% end %>
+        <%= link_to welcome_path, method: :delete do %>
+          <div class="navbar-item">Log Out</div>
+        <% end %>
+      <% else %>
+        <%= link_to login_path do %>
+          <div class="navbar-item">Log In</div>
+        <% end %>
+        <%= link_to signup_path do %>
+          <div class="navbar-item">Sign Up</div>
+        <% end %>
+      <% end %>
+    </div>
+
     <%= yield %>
   </body>
 </html>

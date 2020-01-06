@@ -1,4 +1,4 @@
-<p><%= f.label :hours_played %>: <%= f.number_field :hours_played %></p>
-<p><%= f.label :rating %>: <%= f.number_field :rating %></p>
-<p><%= f.label :review %>: <%= f.text_area :review, size: "50x5" %></p>
-<p><%= f.submit "Save Game!" %></p>
+Hours Played: <%= f.number_field :hours_played %>
+Rating: <%= f.number_field :rating %>
+Review: <%= f.text_area :review, size: "50x5" %>
+<%= f.submit "Save Game!", class: "button" %>

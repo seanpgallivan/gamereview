@@ -24,16 +24,29 @@
     </div>
     <div class="third">
         <% if @game.rating_count > 0 %>
-            <p><span class="large-nums"><%= @game.rating.round(2) %></span><br><b>GameReview Rating</b><br>(based on <%= @game.rating_count %> total ratings)</p>
+            <p><span class="large-nums"><%= @game.rating.round(2) %></span><br><b>GameReview Rating</b><br>(based on <%= @game.rating_count %> total ratings)</p><br>
         <% end %>
         <% if @game.critic_rating %>
-            <p><span class="large-nums"><%= @game.critic_rating.round(2) %></span><br><b>Critic Rating</b><br>(based on <%= @game.critic_rating_count %> total ratings)</p>
+            <p><span class="large-nums"><%= @game.critic_rating.round(2) %></span><br><b>Critic Rating</b><br>(based on <%= @game.critic_rating_count %> total ratings)</p><br>
         <% end %>
         <p><span class="large-nums"><%= @game.igdb_rating.round(2) %></span><br><b>IGDB Rating</b><br>(based on <%= @game.igdb_rating_count %> total ratings)</p>
     </div>
 </div>
 <div class="text-wrapper">
-    <h3>Summary:</h3>
+    <h2>Summary:</h2>
     <p><%= @game.summary %></p>
     <p><%= @game.story %></p>
 </div>
+<br>
+<% if @game.rating_count > 0 %>
+    <div class="text-wrapper">
+        <h2>Reviews:</h2>
+    </div>
+    <% @game.user_games.each do |review| %>
+        <div class="review-wrapper">
+            <div class="rating"><%= review.rating %></div>
+            <h3><%= review.user.name %></h3>
+            <p><%= review.review %></p>
+        </div>
+    <% end %>
+<% end %>

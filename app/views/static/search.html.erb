@@ -1,29 +1,32 @@
 <h1>Search GameReviews</h1>
 <%= form_with url: search_path do |f| %>
-    <p><%= f.label :q, "Search for:" %> <%= f.text_field :q %> <%= f.submit "Search" %></p>
+    <p><%= f.label :q, "Search for:" %> <%= f.text_field :q %> <%= f.submit "Search", class: "button" %></p>
 <% end %>
-<hr>
-<% unless flash[:search_games].blank? %>
-    <h3>Top Results for '<%= flash[:search_term] %>' in Games:</h3>
-    <ul>
-    <% flash[:search_games].each do |game| %>
-        <li><%= link_to game["title"], game_path(slug: game["slug"]) %></li>
-    <% end %>
-    </ul>
-<% end %>
-<% unless flash[:search_genres].blank? %>
-    <h3>Top Results for '<%= flash[:search_term] %>' in Genres:</h3>
-    <ul>
-    <% flash[:search_genres].each do |genre| %>
-        <li><%= link_to genre["name"], genre_path(slug: genre["slug"]) %></li>
-    <% end %>
-    </ul>
-<% end %>
-<% unless flash[:search_modes].blank? %>
-    <h3>Top Results for '<%= flash[:search_term] %>' in Game Modes:</h3>
-    <ul>
-    <% flash[:search_modes].each do |mode| %>
-        <li><%= link_to mode["name"], mode_path(slug: mode["slug"]) %></li>
-    <% end %>
-    </ul>
+<% unless flash[:search_games].blank? && flash[:search_genres].blank? && flash[:search_modes].blank? %>
+    <div class="content-wrapper-left">
+        <% unless flash[:search_games].blank? %>
+            <h3>Top Results for '<%= flash[:search_term] %>' in Games:</h3>
+            <ul>
+            <% flash[:search_games].each do |game| %>
+                <li><%= link_to game["title"], game_path(slug: game["slug"]) %></li>
+            <% end %>
+            </ul>
+        <% end %>
+        <% unless flash[:search_genres].blank? %>
+            <h3>Top Results for '<%= flash[:search_term] %>' in Genres:</h3>
+            <ul>
+            <% flash[:search_genres].each do |genre| %>
+                <li><%= link_to genre["name"], genre_path(slug: genre["slug"]) %></li>
+            <% end %>
+            </ul>
+        <% end %>
+        <% unless flash[:search_modes].blank? %>
+            <h3>Top Results for '<%= flash[:search_term] %>' in Game Modes:</h3>
+            <ul>
+            <% flash[:search_modes].each do |mode| %>
+                <li><%= link_to mode["name"], mode_path(slug: mode["slug"]) %></li>
+            <% end %>
+            </ul>
+        <% end %>
+    </div>
 <% end %>

@@ -1,6 +1,8 @@
-<h1>Start a New Game!</h1>
-<%= form_for @ug, url: new_played_path do |f| %>
-    <p>Game: <%= f.collection_select :game_id, Game.all_alph, :id, :title, {include_blank: true} %></p>
-    <%= render partial: "form", locals: {f: f} %>
-<% end %>
 <%= render "layouts/flash" %>
+<h1>Start a New Game!</h1>
+<div class="content-wrapper">
+    <%= form_for @ug, url: new_played_path do |f| %>
+        <p>Game: <%= f.collection_select :game_id, Game.all_alph, :id, :title, {include_blank: true} %></p>
+        <%= render partial: "form", locals: {f: f} %>
+    <% end %>
+</div>

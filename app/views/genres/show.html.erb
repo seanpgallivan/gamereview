@@ -1,6 +1,8 @@
 <h1>Games in the '<%= @genre.name %>' Genre:</h1>
-<ul>
-<% @genre.games.each do |game| %>
-    <li><%= link_to game.title, game_path(slug: game.slug) %></li>
-<% end %>
-</ul>
+<div class="content-wrapper-left">
+    <ul>
+    <% @genre.games.each do |game| %>
+        <li><%= link_to game.title, game_path(slug: game.slug) %></li>
+    <% end %>
+    </ul>
+</div>

@@ -14,6 +14,104 @@
  *= require_self
  */
 
+
 body {
     background: lightblue;
+    text-align: center;
+    margin: 0px;
+}
+
+div {
+    margin: auto;
+}
+
+.content-wrapper {
+    background: lightcyan;
+    padding: 15px;
+    display: inline-block;
+}
+
+.content-wrapper-left {
+    background: lightcyan;
+    padding: 15px;
+    display: inline-block;
+    text-align: left;
+}
+
+.navbar {
+    background: grey;
+    height: 75px;
+    width: 100%;
+}
+
+.navbar-item {
+    background: teal;
+    color: white;
+    border: 2px solid teal;
+    float: left;
+    width: 150px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 26px;
+    border-radius: 8px;
+    margin: 10px;
+}
+
+.navbar-item:hover {
+    background: plum;
+    border: 2px solid magenta;
+    color: black;
+    transition-duration: 0.3s;
+}
+
+.flash {
+    background: lightsalmon;
+    font-size: 20px;
+    line-height: 25px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+input {
+    border-radius: 4px;
+    padding: 5px;
+    margin: 5px;
+    background: lightgrey;
+    font-size: 16px;
+}
+
+label {
+    font-size: 20px;
+    margin: 5px;
+}
+
+.button {
+    background: skyblue;
+    min-width: 150px;
+}
+
+.button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.select-mod {
+    border: 2px solid #ccc;
+    width: 330px;
+    border-radius: 4px;
+    background: #b5e8f1;
+    margin: 10px auto;
+    padding: 0px 5px;
+}
+
+.select-mod select {
+    width: 100%;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+}
+
+.select-mod select:focus {
+    outline: none;
 }
